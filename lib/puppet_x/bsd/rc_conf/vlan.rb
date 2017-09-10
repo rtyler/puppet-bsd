@@ -2,13 +2,12 @@
 #
 # Responsible for processing the vlan(4) interfaces for rc.conf(5)
 #
-require_relative '../../../puppet_x/bsd/rc_conf'
+require_relative '../rc_conf'
 
 class Vlan < Rc_conf
-
   def initialize(config)
     validation :device,
-      :id
+               :id
 
     options :address
     multiopts :address
@@ -31,6 +30,6 @@ class Vlan < Rc_conf
   end
 
   def content
-    vlan_values().join(" ")
+    vlan_values.join(' ')
   end
 end
