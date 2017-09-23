@@ -69,7 +69,7 @@ define bsd::network::interface (
     }
   }
 
-  case $::kernel {
+  case $::osfamily {
     'OpenBSD': {
       if $file_ensure == 'present' {
         $content = get_openbsd_hostname_if_content($config)
@@ -121,7 +121,7 @@ define bsd::network::interface (
       }
     }
     default: {
-      fail('unhandled BSD, please help add support!')
+      info('Unhandled BSD (${osfamily}), please help add support!')
     }
   }
 }
