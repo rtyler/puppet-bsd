@@ -69,7 +69,7 @@ define bsd::network::interface (
     }
   }
 
-  case $facts['kernel'] {
+  case $::kernel {
     'OpenBSD': {
       if $file_ensure == 'present' {
         $content = get_openbsd_hostname_if_content($config)
